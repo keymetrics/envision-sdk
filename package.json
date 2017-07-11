@@ -1,0 +1,23 @@
+{
+  "name": "envision-sdk",
+  "version": "0.0.1",
+  "description": "Envision SDK",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/keymetrics-envision/envision-sdk.git"
+  },
+  "author": "Florian H-J",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/keymetrics-envision/envision-sdk/issues"
+  },
+  "homepage": "https://github.com/keymetrics-envision/envision-sdk#readme",
+  "dependencies": {
+    "pmx": "^1.2.0",
+    "spiderlink": "^1.0.4"
+  }
+}
