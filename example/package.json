@@ -6,6 +6,14 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "MIT"
+  "author": "Jimi",
+  "license": "MIT",
+  "envision": {
+    "name": "Example",
+    "icon": "https://materialdesignicons.com/api/download/icon/svg/3334E19F-962D-45B4-BE11-F009E1192165",
+    "category": "useless",
+    "description": "This is a module example.",
+    "screen": true,
+    "config": true
+  }
 }

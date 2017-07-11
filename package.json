@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/keymetrics-envision/envision-sdk#readme",
   "dependencies": {
+    "express": "^4.15.3",
     "pmx": "^1.2.0",
     "spiderlink": "^1.0.4"
   },

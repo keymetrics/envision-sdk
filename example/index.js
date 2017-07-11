@@ -1,9 +1,22 @@
 const EnvisionModule = require('envision-sdk')
 
 class MonSuperModule extends EnvisionModule {
-  constructor (props) {
-    super(props)
+  onStart (server, cb) {
+    return cb()
+  }
+
+  onStop (cb) {
+    console.log('Good bye!')
+    return cb()
+  }
+
+  onRemote (req, res) {
+    res.send('We are on a remote client')
+  }
+
+  onLocal (req, res) {
+    res.send('We are on envision dashboard')
   }
 }
 
-const test = new MonSuperModule()
+exports = new MonSuperModule()
