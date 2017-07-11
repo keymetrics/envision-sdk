@@ -38,7 +38,7 @@ class EnvisionModule {
     spiderlink.call('setDashboardUrl', url, () => {})
   }
 
-  listDashboard (cb) {
+  getDashboards (cb) {
     spiderlink.call('listDashboards', dashboards => {
       return cb(dashboards)
     })
@@ -49,6 +49,12 @@ class EnvisionModule {
       if (err) throw err
 
       return cb(modules)
+    })
+  }
+
+  getDashboardInfos (cb) {
+    spiderlink.call('getDashboardInfos', infos => {
+      return cb(infos)
     })
   }
 }
