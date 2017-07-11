@@ -4,7 +4,7 @@
   "description": "Envision SDK",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node test.js"
   },
   "repository": {
     "type": "git",
@@ -19,5 +19,8 @@
   "dependencies": {
     "pmx": "^1.2.0",
     "spiderlink": "^1.0.4"
+  },
+  "devDependencies": {
+    "standard": "^10.0.2"
   }
 }

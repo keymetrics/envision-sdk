@@ -5,10 +5,16 @@ pmx.init({
   isModule: true
 })
 
-class Envision {
-  constructor() {
+class EnvisionModule {
+  constructor () {
+    console.log(pmx._pmx_conf)
+    spiderlink.call('getModulePort', '', ({ err, data }) => {
+      if (err) throw err
 
+      console.log('--- DATA ---')
+      console.log(data)
+    })
   }
 }
 
-module.exports = Envision
+module.exports = EnvisionModule
