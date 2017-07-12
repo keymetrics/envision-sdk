@@ -18,8 +18,8 @@ class EnvisionModule {
       if (err && err !== 'module already exist') throw err
 
       this.onStart(app, () => {
-        if (this.onLocal) app.get('/screen', this.onLocal)
-        if (this.onRemote) app.get('/config', this.onRemote)
+        if (this.onLocal) app.use('/screen', this.onLocal)
+        if (this.onRemote) app.use('/config', this.onRemote)
 
         app.listen(port, () => {
           if (typeof (this.onStarted) === 'function') this.onStarted()
