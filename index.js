@@ -57,6 +57,12 @@ class EnvisionModule {
       return cb(infos)
     })
   }
+
+  pushNotification (type, text, cb) {
+    spiderlink.call('pushNotification', { type, text }, () => {
+      return cb()
+    })
+  }
 }
 
 module.exports = EnvisionModule
