@@ -22,7 +22,7 @@ class EnvisionModule {
         if (this.onRemote) app.use('/config', this.onRemote)
 
         app.listen(port, () => {
-          if (typeof (this.onStarted) === 'function') this.onStarted()
+          if (typeof (this.onStarted) === 'function') this.onStarted(port)
         })
       })
     })
