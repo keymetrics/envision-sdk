@@ -17,6 +17,8 @@ class EnvisionModule {
     spiderlink.call('getModulePort', this.name, ({ err, port }) => {
       if (err && err !== 'module already exist') throw err
 
+      this.port = port
+
       this.onStart(app, () => {
         if (this.onLocal) app.use('/screen', this.onLocal)
         if (this.onRemote) app.use('/config', this.onRemote)
@@ -24,6 +26,13 @@ class EnvisionModule {
         app.listen(port, () => {
           if (typeof (this.onStarted) === 'function') this.onStarted(port)
         })
+      })
+    })
+
+    spiderlink.emitter.on('reconnect', () => {
+      spiderlink.call('getModulePort', this.name, ({ err, port }) => {
+        if (err && err !== 'module already exist') throw err
+        if (this.port !== port) throw new Error('not same port')
       })
     })
 
