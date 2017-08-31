@@ -68,6 +68,18 @@ class MonSuperModule extends EnvisionModule {
 exports = new MonSuperModule()
 ```
 
+### Serve static files
+```js
+const express = require('express')
+
+class MonSuperModule extends EnvisionModule {
+  onRemote (req, res) {
+    // You can use this trick to serve specific files
+    express.static('remote')(req, res)
+  }
+}
+```
+
 ## API
 EnvisionModule contains API to make some actions on Envision
 
