@@ -23,6 +23,7 @@ class EnvisionModule {
         if (this.onLocal) app.use('/screen', this.onLocal)
         if (this.onRemote) app.use('/config', this.onRemote)
 
+        console.log('Module listening on port ' + this.port);
         app.listen(this.port, () => {
           if (typeof (this.onStarted) === 'function') this.onStarted(this.port)
         })
