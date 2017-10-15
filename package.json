@@ -1,6 +1,6 @@
 {
   "name": "envision-sdk",
-  "version": "0.0.2",
+  "version": "0.1.1",
   "description": "Envision SDK",
   "main": "index.js",
   "scripts": {
@@ -18,8 +18,8 @@
   "homepage": "https://github.com/keymetrics-envision/envision-sdk#readme",
   "dependencies": {
     "express": "^4.15.3",
-    "pmx": "^1.2.0",
-    "spiderlink": "^1.0.4"
+    "pmx": "latest",
+    "spiderlink": "latest"
   },
   "devDependencies": {
     "standard": "^10.0.2"

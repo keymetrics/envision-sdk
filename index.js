@@ -14,25 +14,25 @@ class EnvisionModule {
 
     this.name = pmx._pmx_conf.module_name
 
-    spiderlink.call('getModulePort', this.name, ({ err, port }) => {
-      if (err && err !== 'module already exist') throw err
+    spiderlink.call('getModuleInfos', this.name, (module) => {
+      if (module.err) throw new Error(module.err);
 
-      this.port = port
+      this.port = module.port;
 
       this.onStart(app, () => {
         if (this.onLocal) app.use('/screen', this.onLocal)
         if (this.onRemote) app.use('/config', this.onRemote)
 
-        app.listen(port, () => {
-          if (typeof (this.onStarted) === 'function') this.onStarted(port)
+        app.listen(this.port, () => {
+          if (typeof (this.onStarted) === 'function') this.onStarted(this.port)
         })
       })
     })
 
     spiderlink.emitter.on('reconnect', () => {
-      spiderlink.call('getModulePort', this.name, ({ err, port }) => {
-        if (err && err !== 'module already exist') throw err
-        if (this.port !== port) throw new Error('not same port')
+      spiderlink.call('getModulePort', this.name, (module) => {
+        if (module.err) throw new Error(module.err);
+        if (this.port !== module.port) throw new Error('not same port')
       })
     })
 
