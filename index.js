@@ -3,10 +3,6 @@ const pmx = require('pmx')
 const express = require('express')
 const app = express()
 
-pmx.init({
-  isModule: true
-})
-
 class EnvisionModule {
   constructor () {
     if (typeof (this.onStart) !== 'function') throw new Error('onStart must handled')
