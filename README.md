@@ -69,13 +69,46 @@ exports = new MonSuperModule()
 ```
 
 ### Serve static files
+You can override express functions
 ```js
 const express = require('express')
 
 class MonSuperModule extends EnvisionModule {
-  onRemote (req, res) {
-    // You can use this trick to serve specific files
-    express.static('remote')(req, res)
+  onStart (server, cb) {
+    this.onRemote = express.static('remote')
+    cb()
+  }
+}
+```
+
+### Add routes
+Example with `POST` upload route for remote configuration
+
+```js
+const remoteRouter = express.Router()
+
+var upload = multer({ dest: process.env.HOME + '/' })
+
+remoteRouter.get('/', (req, res) => {
+  res.sendFile(__dirname + '/remote.html')
+})
+
+remoteRouter.post('/upload', upload.single('file'), function(req, res) {
+  let source = fs.createReadStream(req.file.path)
+  let destination = fs.createWriteStream(process.env.HOME + '/video.mp4')
+
+  source.pipe(destination, { end: false });
+  source.on("end", function(){
+      fs.unlinkSync(req.file.path)
+      res.send('Good!')
+  })
+})
+
+class MonSuperModule extends EnvisionModule {
+  onStart (server, cb) {
+    console.log('started')
+    this.onRemote = remoteRouter
+    return cb()
   }
 }
 ```
