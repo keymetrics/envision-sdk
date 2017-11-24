@@ -15,5 +15,8 @@
     "description": "This is a module example.",
     "screen": true,
     "config": true
+  },
+  "dependencies": {
+    "envision-sdk": "latest"
   }
 }
