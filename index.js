@@ -84,7 +84,8 @@ class EnvisionModule {
     if (typeof (this.onStop) !== 'function') throw new Error('onStop must handled')
 
     this.name = pmx._pmx_conf.module_name
-    this.ws = new WebSocket(`unix+ws://${process.env.HOME}/envision`)
+    console.log(`Connecting to ws+unix://${process.env.HOME}/envision`)
+    this.ws = new WebSocket(`ws+unix://${process.env.HOME}/envision`)
     this.json = (obj) => this.ws.send(JSON.stringify(obj))
 
     this.ws.on('open', () => {
@@ -162,7 +163,8 @@ class EnvisionModule {
 }
 
 if (!fs.existsSync(path.join(process.env.HOME, 'envision'))) {
+  console.log('Using Spiderlink communicator')
   module.exports = EnvisionModuleV1
+} else {
+  module.exports = EnvisionModule
 }
-
-module.exports = EnvisionModule
