@@ -1,6 +1,6 @@
 {
   "name": "envision-sdk",
-  "version": "0.1.4",
+  "version": "0.1.9",
   "description": "Envision SDK",
   "main": "index.js",
   "scripts": {
