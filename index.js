@@ -90,7 +90,7 @@ class EnvisionModule {
 
   connectEnvision () {
     console.log(`Connecting to ws+unix://${process.env.HOME}/envision`)
-    this.ws = new WebSocket(`ws+unix://${process.env.HOME}/envision`)
+    this.ws = new WebSocket(`ws+unix://${process.env.HOME}/envision:/?id=${this.name}`)
     this.json = (obj) => this.ws.send(JSON.stringify(obj))
 
     this.ws.on('open', () => {
@@ -132,7 +132,6 @@ class EnvisionModule {
             this.server = app.listen(this.port, () => {
               console.log('Module listening on port ' + this.port)
               if (typeof (this.onStarted) === 'function') this.onStarted(this.port)
-              this.ws.json({ action: 'online' })
             })
           })
           break
