@@ -68,6 +68,16 @@ class MonSuperModule extends EnvisionModule {
 exports = new MonSuperModule()
 ```
 
+### Methods
+
+```
+this.setDashboardUrl(<url>)
+this.getDashboards(cb)
+this.getModules(cb)
+this.getDashboardInfos(cb)
+this.pushNotification(<type(error)>, <text>)
+```
+
 ### Serve static files
 You can override express functions
 ```js
@@ -114,6 +124,7 @@ class MonSuperModule extends EnvisionModule {
 ```
 
 ## API
+
 EnvisionModule contains API to make some actions on Envision
 
 ### setDashboardUrl
@@ -121,6 +132,7 @@ EnvisionModule contains API to make some actions on Envision
 Can set Envision interface to a specific URL
 
 Example:
+
 ```js
 this.setDashboardUrl('https://keymetrics.io/')
 ```
@@ -131,6 +143,7 @@ List all dashboards in your internal networks
 NB: development and production dashboards are separated.
 
 Example:
+
 ```js
 this.getDashboards(dashboards => {
   dashboards = [
@@ -139,17 +152,6 @@ this.getDashboards(dashboards => {
       "host": "192.168.0.138",
       "infos": {
         "ip": "192.168.0.138",
-        "config": {
-          "env": "development",
-          "api_port": 3200,
-          "discovery_name": "pxx-xncs-xs",
-          "config_path": "/tmp",
-          "interval_check_internet": 1000,
-          "default": "envision",
-          "interval_online_dashboard": 1000,
-          "interval_lookup_dashboard": 1000,
-          "connection_tentatives": 3
-        },
         "version": "0.2.34",
         "hostname": "florian-debian",
         "name": "florian-debian",
@@ -212,6 +214,7 @@ Send notification to Envision interface
 NB: if sound is at 0%, notification sound is not played
 
 Example:
+
 ```js
 this.pushNotification('confirm', 'Success!', () => {
   console.log('Notification sent')
