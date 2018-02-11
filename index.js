@@ -39,13 +39,15 @@ class EnvisionModule {
     this.ws.on('message', msg => {
       try {
         msg = JSON.parse(msg)
-        console.log(msg)
       } catch (error) {
         return
       }
       let data = msg.data
 
       switch (msg.action) {
+        case 'ping':
+          this.json({action : 'pong' })
+          break
         case 'sendModuleInfos':
           if (data.err) throw new Error(data.err)
 
@@ -56,8 +58,11 @@ class EnvisionModule {
             if (this.onRemote) app.use('/config', this.onRemote)
 
             this.server = app.listen(this.port, () => {
-              console.log('Module listening on port ' + this.port)
               if (typeof (this.onStarted) === 'function') this.onStarted(this.port)
+              // Send ACK that module is listening and ready
+              this.json({
+                action : 'moduleReady'
+              })
             })
           })
           break
