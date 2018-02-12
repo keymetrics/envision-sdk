@@ -1,6 +1,6 @@
 {
   "name": "envision-sdk",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Envision SDK",
   "main": "index.js",
   "scripts": {
@@ -19,7 +19,8 @@
   "dependencies": {
     "express": "^4.15.3",
     "pmx": "latest",
-    "debug" : "latest"
+    "ws": "^4",
+    "debug": "latest"
   },
   "devDependencies": {
     "standard": "^10.0.2"
